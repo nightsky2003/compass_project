@@ -245,8 +245,6 @@ void LCD_Init(void) {
 
     LCD_SendCommand(0x28); 
     HAL_Delay(1);
-    LCD_SendCommand(0x08); 
-    HAL_Delay(1);
     LCD_SendCommand(0x01); 
     HAL_Delay(2);
     LCD_SendCommand(0x06); 
@@ -348,7 +346,6 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	
   LCD_Init();
-  LCD_ClearDisplay();
   /* USER CODE END 2 */
 
   /* Infinite loop */
