@@ -89,8 +89,6 @@ int16_t z=0;
 bool volatile is_system_on = false;
 float azimuth_angle=0;
 
-uint32_t check=0;
-uint32_t check2=0;
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
   if(GPIO_Pin == SW1_Pin){
@@ -115,7 +113,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 		HAL_Delay(30);
 		__HAL_GPIO_EXTI_CLEAR_IT(SW1_Pin);
 		HAL_NVIC_ClearPendingIRQ(SW1_EXTI_IRQn);
-		check++;
 	}else if(GPIO_Pin == SW2_Pin){
 		is_system_on = false;
 		HAL_GPIO_WritePin(RED_LED_GPIO_Port, RED_LED_Pin, 1);
@@ -129,7 +126,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 		HAL_Delay(30);
 		__HAL_GPIO_EXTI_CLEAR_IT(SW2_Pin);
 		HAL_NVIC_ClearPendingIRQ(SW2_EXTI_IRQn);
-		check++;
 	}
 }
 uint32_t a=0;
@@ -202,14 +198,6 @@ void Buzzer_Active(){
 	HAL_GPIO_WritePin(Buzzer_GPIO_Port, Buzzer_Pin, 1);
 	HAL_Delay(60);
 	HAL_GPIO_WritePin(Buzzer_GPIO_Port, Buzzer_Pin, 0);
-}
-
-void QMC5883L_Init(){
-    uint8_t config_3_value = 0x01;
-		uint8_t config_1_value = 0x01 | 0x08 | 0x00 | 0x00;  
-	
-    HAL_I2C_Mem_Write(&hi2c1, QMC5883L_ADDR, QMC5883L_REGISTER_3_ADDR, 1, &config_3_value, 1, 10);
-    HAL_I2C_Mem_Write(&hi2c1, QMC5883L_ADDR, QMC5883L_REGISTER_1_ADDR, 1, &config_1_value, 1, 10);
 }
 
 void QMC5883L_SetContinuousMode(){
