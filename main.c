@@ -128,7 +128,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 		HAL_NVIC_ClearPendingIRQ(SW2_EXTI_IRQn);
 	}
 }
-uint32_t a=0;
+
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   if(htim->Instance == TIM1){
@@ -185,7 +185,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			LCD_SendString("Bac Tay Bac", 1, 2);
 		}
 	}else if(htim->Instance == TIM2){
-		a++;
 		if(is_system_on == true){
 			HAL_GPIO_TogglePin(BLUE_LED_GPIO_Port, BLUE_LED_Pin);
 		}else{
