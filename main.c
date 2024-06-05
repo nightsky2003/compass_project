@@ -200,7 +200,7 @@ void Buzzer_Active(){
 }
 
 void QMC5883L_SetContinuousMode(){
-	uint8_t config_3_value = 0x01;
+  uint8_t config_3_value = 0x01;
   uint8_t config_1_value = 0x01 | 0x08 | 0x00 | 0x00;
     
   HAL_I2C_Mem_Write(&hi2c1, QMC5883L_ADDR, QMC5883L_REGISTER_3_ADDR, 1, &config_3_value, 1, 10);
@@ -239,7 +239,7 @@ void LCD_Init(void) {
     LCD_SendCommand(0x30); 
     HAL_Delay(1);
     LCD_SendCommand(0x30); 
-		HAL_Delay(10);
+    HAL_Delay(10);
     LCD_SendCommand(0x20); 
     HAL_Delay(10);
 
@@ -283,8 +283,8 @@ void LCD_SendData(uint8_t data) {
 void LCD_SendString(char *str, uint8_t row, uint8_t col) {
 	LCD_SetCursor(row, col);
     while(*str != '\0') {
-			LCD_SendData(*str);
-			str++;
+	LCD_SendData(*str);
+	str++;
     }
 }
 
@@ -347,8 +347,8 @@ int main(void)
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
 	
-	LCD_Init();
-	LCD_ClearDisplay();
+  LCD_Init();
+  LCD_ClearDisplay();
   /* USER CODE END 2 */
 
   /* Infinite loop */
